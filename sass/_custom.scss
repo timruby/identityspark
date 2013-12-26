@@ -1,0 +1,266 @@
+// Color Variables
+
+$chocolate: 	#7D6C63; // Sidebar Brown
+$darkChocolate: #463A39; // Spark Brown
+$cream: 		#E2E1D9; // Background Color
+$spark: 		#EF7236; // Spark Orange
+
+@mixin textShadow {
+	text-shadow: 1px 0 1px lighten($cream, 5%);
+}
+
+@mixin headerFooterBg {
+	background-color: darken($darkChocolate, 10%); 
+	background-image: url('../img/chocolate-noise.png');
+	background-repeat: repeat; 
+	background-position: top left;
+}
+
+
+// Begin Style
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: $cream url('../img/body-background.png') repeat top left;
+}
+
+header {
+	@include headerFooterBg();
+	width: 100%;
+	border-bottom: 1px solid darken($darkChocolate, 10%);
+	font-size: 0.75rem;
+
+	ul{
+		float: right;
+		height: 2rem;
+
+		li {
+			display: inline-table;
+			line-height: 2.25rem;
+		}
+
+		li:first-child {
+			margin-right: 15px;
+		}
+
+		li > a {
+			color: $spark;
+		}
+
+		li > a:hover {
+			color: #FFF;
+		}
+	}
+}
+
+.navbar {
+	background: none;
+	padding: 10px 0;
+	border-bottom: 1px solid darken($cream, 10%);
+	@include box-shadow(0 1px 0 lighten($cream, 5%));
+
+	.logo a img {
+		height: 50px;
+		width: auto;
+	}
+	
+	ul {
+		float: right;
+	}
+
+ 	ul li > a {
+ 		position: relative;
+ 		@include textShadow;
+ 		font-weight: 600;
+ 		font-size: 1rem;
+ 		color: $darkChocolate;
+
+ 		&:hover:before, &:active:before {
+ 			position: absolute;
+ 			left: 15px;
+ 			top: 25px;
+ 			content:'';
+ 			width: 0; 
+			height: 0; 
+			border-top: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+			border-left: 5px solid $darkChocolate;
+ 		}
+ 	}
+}
+
+.gumby-no-touch .navbar ul li:hover .dropdown, 
+.gumby-touch .navbar ul li.active .dropdown {
+	border-top: none;
+}
+
+.gumby-no-touch .navbar ul li:hover > a, 
+.gumby-no-touch .navbar ul li:hover > a:hover {
+	position: relative;
+ 	background: transparent;
+ 	color: $spark;
+}
+
+ // Begin Slider Styling
+ .slider-container {
+ 	background: transparent url('../img/slider-grid-background.png') no-repeat center center;
+ 	background-size: cover;
+ 	background-origin: content-box;
+ 	min-height: 400px;
+}
+
+// Begin Index Gallery
+#main {
+	padding: 40px 0;
+	text-align: center;
+
+	.gallery-i {
+		margin-bottom: 1.25rem;
+
+		img {
+			width: 100%;
+			height: auto;
+			border: 6px solid white;
+		}
+		
+		.gallery-meta {
+			@include textShadow;
+			margin-bottom: 20px;
+			text-align: left;
+			font-size: 0.85rem;
+			font-weight: 600;
+		}
+	}
+
+	.sidebar {
+		padding: 0.625rem;
+		background: $chocolate url('../img/sidebar-hatched-background.png') repeat top left;
+		font-size: 0.85rem;
+		text-align: center;
+
+		h4, p {
+			text-align: left;
+			color: whiteSmoke;
+
+
+		}
+	}
+}   
+
+footer {
+	@include headerFooterBg();
+	position: relative;
+	padding-top: 15px;
+	width: 100%;
+	color: whiteSmoke;
+	border-top: 2px solid $chocolate;
+	
+	&:after {
+		position: absolute;
+		top: -10px;
+		left: 0;
+		content:'';
+		width: 100%;
+		height: 30px;
+		background: transparent url('../img/scalloped.png') repeat-x top left;
+	}
+
+	& h4 {
+		color: whiteSmoke !important;
+		margin-bottom: 15px;
+		font-size: 1.25rem;
+		font-weight: 700;
+	}
+
+	& p { 
+		font-size: 0.8rem; 
+	}
+	
+	.copyright {
+		margin-top: 30px;
+		width: 100%;
+		background: darken($darkChocolate, 15%);
+		border-top: 1px solid $chocolate;
+
+		ul li {
+			display: inline-table;
+			margin-right: 20px;
+			padding-top: 10px;
+			font-weight: 600;
+			text-shadow: 1px 0 1px darken($darkChocolate, 25%);
+
+			a {
+				font-size: 0.85rem;
+				color: $chocolate;
+			}
+		}
+
+		p {
+			padding-top: 10px;
+			font-size: 0.75rem;
+			line-height: 1.5rem;
+			text-align: right;
+		}
+	}
+}
+
+.featured-designer {
+
+	img {
+		margin-top: 10px;
+		width: 100%;
+		height: 225px;
+	}
+
+	h4 {
+		margin-bottom: 0;
+	}
+
+	.featured-month {
+		margin-top: 0;
+		padding-bottom: 1.125rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: $spark;
+		border-bottom: 1px dashed $chocolate;
+	}
+
+	.featured-name {
+		margin: 0;
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: whiteSmoke;
+	}
+}
+
+.recent-activity-f {
+
+	& ul {
+		border-bottom: 1px dashed $chocolate;
+
+		& li:first-child {
+		font-weight: 700;
+		color: $spark;
+		}
+
+		& li:last-child {
+			margin-right: 0;
+		}
+
+		& li {
+			display: inline-table;
+			padding: 0 5px 5px 0;
+			font-size: 0.85rem;
+			color: lighten($cream, 10%);
+		}
+	}
+}
+
+
+
+
+
+
